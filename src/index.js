@@ -1,6 +1,13 @@
 import express from 'express';
 import cors from 'cors';
+
 const app = express();
+
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.get('/task2A', (req, res) => {
   const a = getNumber(req.query.a);
